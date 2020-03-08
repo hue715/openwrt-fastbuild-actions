@@ -339,7 +339,7 @@ jobs:
         push_image_and_cache
 
   build-package:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     # Activate this job when specified '#build-package#'
     # * To build on schedule event, add OR condition:
     #     github.event_name == 'schedule'
@@ -356,6 +356,8 @@ jobs:
       ) || (
         github.event_name == 'deployment'
         && github.event.deployment.task == 'build-package'
+      ) || (
+        github.event_name == 'watch' && github.event.action == 'started' && github.event.repository.owner.id == github.event.sender.id
       )
     name: ${{matrix.title}}
     strategy:
