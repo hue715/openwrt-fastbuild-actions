@@ -26,8 +26,8 @@ env:
   BUILDER_TAG: latest
   # Specify here the OpenWrt Repo URL and Branch
   # 在这里指定你的OpenWrt的Repo URL和Branch
-  REPO_URL: https://github.com/coolsnowwolf/lede
-  REPO_BRANCH: master
+  REPO_URL: https://github.com/hue715/lede
+  REPO_BRANCH: patch1
   # REPO_URL: https://github.com/openwrt/openwrt
   # REPO_BRANCH: openwrt-19.07
   # Specify here your config file
@@ -71,12 +71,12 @@ on:
   ##     e.g. every sunday midnight: '0 0 * * 0' every midnight: '0 0 * * *'
   # schedule:
   #   - cron: '0 0 * * 0'
-  # watch:
-  #   types: [started]
+  watch:
+    types: [started]
 
 jobs:
   build-inc:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     # Always activate this job, unless specified '#build-package#'
     # * You can change Line 3 to the following one to only build when push with '#build-inc#'
     #     && contains(github.event.head_commit.message, '#build-inc#')
